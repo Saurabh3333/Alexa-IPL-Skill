@@ -1,0 +1,7 @@
+- alias: hasura
+  config:
+    configmap: controller-conf
+    namespace: modesty54-hasura
+  data: null
+  kubeContext: modesty54
+  name: modesty54
