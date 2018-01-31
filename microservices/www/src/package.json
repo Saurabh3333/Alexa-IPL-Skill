@@ -6,6 +6,7 @@
     "alexa-sdk": "^1.0.10",
     "alexa-verifier": "^1.0.0",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "request": "^2.83.0"
   }
 }
