@@ -1,14 +1,32 @@
-const Alexa = require('alexa-sdk');
- 
-exports.handler = function(event, context, callback) {
-    const alexa = Alexa.handler(event, context, callback);
-    alexa.appId = 'amzn1.ask.skill.77a961da-da8f-4d6a-9f4b-71f99eacb92d'; // APP_ID is your skill id which can be found in the Amazon developer console where you create the skill.
-    alexa.execute();
-};
+var express = require('express');
+var bodyParser = require('body-parser');
+var alexaVerifier = require('alexa-verifier');
 
-const handlers = {
-    'HelloWorldIntent' : function() {
-        //emit response directly
-        this.emit(':tell', 'Hello World!');
+const app = express();
+app.use(bodyParser.json({
+    verify: function getRawBody(req, res, buf) {
+        req.rawBody = buf.toString();
     }
-};
+}));
+
+function requestVerifier(req, res, next) {
+    alexaVerifier(
+        req.headers.signaturecertchainurl,
+        req.headers.signature,
+        req.rawBody,
+        function verificationCallback(err) {
+            if (err) {
+                res.status(401).json({ message: 'Verification Failure', error: err });
+            } else {
+                next();
+            }
+        }
+    );
+}
+
+app.post('/hasura-ipl', requestVerifier, function(req, res) {
+    // We'll fill this out later!
+    res.json({ hello: 'world' });
+});
+
+app.listen(3000);
