@@ -24,6 +24,6 @@ app.post('/hasura-ipl', verify, function(req, res) {
     res.json({ hello: 'world' });
 });
 
-app.listen(3000, () => {
-    console.log("App is listening to port 3000");
+app.listen(8080, () => {
+    console.log("App is listening to port 8080");
 });
