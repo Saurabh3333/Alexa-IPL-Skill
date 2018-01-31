@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
     res.json({ message: 'The Hasura IPL is up and running.', since: (new Date()).toString() });
 });
 
-app.post('/forecast', verify, forecaster);
+app.post('/hasura-ipl', verify, forecaster);
 
 app.listen(8080, () => {
     console.log("App is listening to port 8080");
