@@ -5,7 +5,6 @@ var forecaster = require('./forecaster');
 
 const app = express();
 
-app.set('port', process.env.PORT || 3000);
 
 app.use(express.static('public'));
 
@@ -25,6 +24,6 @@ app.post('/hasura-ipl', verify, function(req, res) {
     res.json({ hello: 'world' });
 });
 
-app.listen(app.get('port'), function() {
-    console.log('The Hasura IPL is up and running on port %d', app.get('port'));
+app.listen(3000, () => {
+    console.log("App is listening to port 3000");
 });
