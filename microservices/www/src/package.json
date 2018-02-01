@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "alexa-app": "^4.2.1",
+    "alexa-response": "^4.2.10",
     "alexa-sdk": "^1.0.10",
     "alexa-verifier": "^1.0.0",
     "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "request": "^2.83.0"
   }
