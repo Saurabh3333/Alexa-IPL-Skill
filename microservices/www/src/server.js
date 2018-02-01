@@ -14,6 +14,10 @@ app.get('/', function(req, res) {
     res.send("Hasura IPL is listening to requests at /ipl");
 });
 
+app.get('/ipl', function(req, res) {
+    res.send("Hasura IPL skill is live.");
+});
+
 alexaApp.express({
     expressApp: app,
     //router: express.Router(),
@@ -39,7 +43,7 @@ alexaApp.express({
   
   alexaApp.intent("iplDefinitionIntent", {},
     function(request, response) {
-      response.say("The Indian Premier League or IPL, officially Vivo Indian Premier League for sponsorship reasons, is a professional Twenty20 cricket league in India contested during April and May of every year by teams representing Indian cities.");
+      response.say("The Indian Premier League (IPL), officially Vivo Indian Premier League for sponsorship reasons, is a professional Twenty20 cricket league in India contested during April and May of every year by teams representing Indian cities.");
     }
   );
 
