@@ -1,0 +1,3 @@
+- args:
+    sql: ALTER TABLE "matches" DROP COLUMN "umpire2"
+  type: run_sql

@@ -1,0 +1,9 @@
+- args:
+    sql: ALTER TABLE "movies" ALTER COLUMN "crew" TYPE jsonb;
+  type: run_sql
+- args:
+    sql: ALTER TABLE "movies" ALTER COLUMN "crew" DROP DEFAULT;
+  type: run_sql
+- args:
+    sql: ALTER TABLE "movies" ALTER COLUMN "crew" SET NOT NULL;
+  type: run_sql

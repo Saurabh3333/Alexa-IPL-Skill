@@ -1,0 +1,14 @@
+- args:
+    sql: CREATE TABLE "deliveries"("id" integer NOT NULL, "match_id" integer NOT NULL,
+      "inning" integer NOT NULL, "batting_team" text NOT NULL, "bowling_team" text
+      NOT NULL, "over" integer NOT NULL, "ball" integer NOT NULL, "batsman" text NOT
+      NULL, "non_striker" text NOT NULL, "bowler" text NOT NULL, "is_super_over" integer
+      NOT NULL, "wide_runs" integer NOT NULL, "bye_runs" integer NOT NULL, "legbye_runs"
+      integer NOT NULL, "noball_runs" integer NOT NULL, "penalty_runs" integer NOT
+      NULL, "batsman_runs" integer NOT NULL, "extra_runs" integer NOT NULL, "total_runs"
+      integer NOT NULL, "player_dismissed" text NOT NULL, "dismissal_kind" text NOT
+      NULL, "fielder" text NOT NULL, PRIMARY KEY ("id") )
+  type: run_sql
+- args:
+    name: deliveries
+  type: add_existing_table_or_view
