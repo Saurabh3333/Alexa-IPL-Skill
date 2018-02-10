@@ -25,7 +25,7 @@ alexaApp.express({
   });
   
   alexaApp.launch(function(request, response) {
-    response.say("You have launched the Hasura IPL skill.");
+    response.say("You have launched the Hasura IPL skill..");
   });
   
   
