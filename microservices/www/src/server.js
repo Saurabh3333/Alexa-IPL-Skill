@@ -35,6 +35,12 @@ alexaApp.express({
     }
   );
 
+  alexaApp.intent("iplTotalMatches", {},
+  function(request, response) {
+    response.say("Total number of matches played is 336.");
+    }
+  );
+
 
 app.listen(8080, () => {
     console.log("Hasura IPL is listening to port 8080");
