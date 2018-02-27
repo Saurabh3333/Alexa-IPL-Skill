@@ -54,26 +54,7 @@ alexaApp.express({
 
   alexaApp.intent("iplTotalMatches", {},
   function(request, response) {
-        var body = {
-          "type": "count",
-          "args": {
-              "table": "matches",
-              "where": {}
-          }
-      };
-
-      requestOptions.body = JSON.stringify(body);
-
-      fetchAction(url, requestOptions)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(result) {
-        response.say("Total number of matches played is " + JSON.stringify(result.count));
-      })
-      .catch(function(error) {
-        response.say('Request Failed:' + error);
-      });
+        response.say("Thanksssssssssssss");
     }
   );
 
