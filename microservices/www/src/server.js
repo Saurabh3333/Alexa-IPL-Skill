@@ -111,7 +111,7 @@ alexaApp.intent("iplFinalWinner", {},
         return response.json();
       })
       .then(function(result) {
-        response.say(JSON.stringify(result[result.length-1].winner));
+        response.say("The winner of IPL season " + slot.value + " is" + JSON.stringify(result[result.length-1].winner));
       })
       .catch(function(error) {
         response.say('Sorry! We are unable to process your request.');
