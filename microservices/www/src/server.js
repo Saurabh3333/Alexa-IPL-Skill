@@ -21,6 +21,8 @@ var requestOptions = {
         "Authorization": "Bearer 76a9302025005e13d9a6e123cb5245f7daaf3ee3f94399c7"
     }
 };
+var seasons={"2008":2008,"1":2008,"2009":2009,"2":2009,"2010":2010,"3":2010,"2011":2011,"4":2011,"2012":2012,"5":2012,"2013":2013,"6":2013,"2014":2014,"7":2014,"2015":2015,
+"8":2015,"2016":2016,"9":2016,"2017":2017,"10":2017}
 
 //-----------------------------------------------------------
 
@@ -67,29 +69,62 @@ alexaApp.express({
         return response.json();
       })
       .then(function(result) {
-        res.send("Total number of matches played is " + JSON.stringify(result.count));
+        response.say("Total number of matches played is " + JSON.stringify(result.count));
       })
       .catch(function(error) {
-        res.send('Request Failed:' + error);
+        response.say('Request Failed:' + error);
       });
     }
   );
 
 alexaApp.intent("thanksIntent", {},
   function(request, response) {
-    response.say("Thank you for using Alexa IPL skill made by team T88 HPDF.");
+    response.say("Thank you for using Alexa IPL skill. Bye!");
   }
 );
 
 alexaApp.intent("iplFinalWinner", {},
   function(request, response) {
     var slot = request.slots['season'];
-    response.say("The season number is " + slot.value);
+    if(seasons[slot.value]){
+      var season = JSON.stringify(seasons[slot.value]);
+    
+      var body = {
+        "type": "select",
+        "args": {
+            "table": "matches",
+            "columns": [
+                "*"
+            ],
+            "where": {
+                "season": {
+                    "$eq": season
+                }
+            }
+        }
+    };
+
+      requestOptions.body = JSON.stringify(body);
+
+      fetchAction(url, requestOptions)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        response.say("The winner of IPL season " + slot.value + " is" + JSON.stringify(result[result.length-1].winner));
+      })
+      .catch(function(error) {
+        response.say('Sorry! We are unable to process your request.');
+      });
+    }
+    else{
+      response.say('Sorry! We are unable to process your request.');
+    }
   }
 );
 
 app.get('/test', function(req, res) {
-    
+  
 });
 
 
