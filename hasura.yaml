@@ -3,5 +3,5 @@ description: |
   Follow the steps in the README to get started!
 keywords: hello-world, getting-started, hasura, tutorial, quickstart
 media: {}
-name: hello-world
+name: alexa-ipl-skill
 platformVersion: v0.15.21
