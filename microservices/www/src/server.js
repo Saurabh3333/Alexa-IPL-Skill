@@ -9,6 +9,21 @@ app.set("view engine", "ejs");
 
 app.use(express.static('public'));
 
+//---------------------------------------------------------
+var fetchAction =  require('node-fetch');
+
+var url = "https://data.modesty54.hasura-app.io/v1/query";
+
+var requestOptions = {
+    "method": "POST",
+    "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 76a9302025005e13d9a6e123cb5245f7daaf3ee3f94399c7"
+    }
+};
+
+//-----------------------------------------------------------
+
 
 app.get('/', function(req, res) {
     res.send("Hasura IPL is listening to requests at /ipl");
@@ -37,9 +52,45 @@ alexaApp.express({
 
   alexaApp.intent("iplTotalMatches", {},
   function(request, response) {
-    response.say("Total number of matches played is 336.");
+        var body = {
+          "type": "count",
+          "args": {
+              "table": "matches",
+              "where": {}
+          }
+      };
+
+      requestOptions.body = JSON.stringify(body);
+
+      fetchAction(url, requestOptions)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        res.send("Total number of matches played is " + JSON.stringify(result.count));
+      })
+      .catch(function(error) {
+        res.send('Request Failed:' + error);
+      });
     }
   );
+
+alexaApp.intent("thanksIntent", {},
+  function(request, response) {
+    response.say("Thank you for using Alexa IPL skill made by team T88 HPDF.");
+  }
+);
+
+alexaApp.intent("iplFinalWinner", {},
+  function(request, response) {
+    var slot = request.slots['season'];
+    response.say("The season number is " + slot.value);
+  }
+);
+
+app.get('/test', function(req, res) {
+    
+});
 
 
 app.listen(8080, () => {
