@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var alexa = require("alexa-app");
+var request = require("request");
 
 const app = express();
 var alexaApp = new alexa.app("ipl");
@@ -8,6 +9,7 @@ app.set("view engine", "ejs");
 
 
 app.use(express.static('public'));
+var bodyParser = require('body-parser');
 
 //---------------------------------------------------------
 var fetchAction =  require('node-fetch');
@@ -15,8 +17,9 @@ var fetchAction =  require('node-fetch');
 var url = "https://data.modesty54.hasura-app.io/v1/query";
 
 var requestOptions = {
-    "method": "POST",
-    "headers": {
+    method: "POST",
+    url: "https://data.modesty54.hasura-app.io/v1/query/",
+    headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer 76a9302025005e13d9a6e123cb5245f7daaf3ee3f94399c7"
     }
@@ -46,17 +49,31 @@ alexaApp.express({
   });
   
   
-  alexaApp.intent("iplDefinitionIntent", {},
-    function(request, response) {
-      response.say("The Indian Premier League (IPL), officially Vivo Indian Premier League for sponsorship reasons, is a professional Twenty20 cricket league in India contested during April and May of every year by teams representing Indian cities.");
+  alexaApp.intent("iplTotalMatches", {},
+  function(request, response) {
+        var body = {
+          "type": "count",
+          "args": {
+              "table": "matches",
+              "where": {}
+          }
+      };
+
+      requestOptions.body = JSON.stringify(body);
+
+      fetchAction(url, requestOptions)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        response.say("Total number of matches played is " + JSON.stringify(result.count));
+      })
+      .catch(function(error) {
+        response.say('Request Failed:' + error);
+      });
     }
   );
 
-  alexaApp.intent("iplTotalMatches", {},
-  function(request, response) {
-        response.say("Thanksssssssssssss");
-    }
-  );
 
 alexaApp.intent("thanksIntent", {},
   function(request, response) {
@@ -105,7 +122,7 @@ alexaApp.intent("iplFinalWinner", {},
 );
 
 app.get('/test', function(req, res) {
-  
+     
 });
 
 
