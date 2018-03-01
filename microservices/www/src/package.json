@@ -1,17 +1,28 @@
 {
-  "name": "tronald-dump-alexa-skill",
-  "version": "1.0.0",
-  "private": true,
+  "name": "jovo-sample-voice-app-nodejs",
+  "version": "0.0.1",
+  "description": "A sample voice app that works with the Jovo framework",
+  "main": "index.js",
   "dependencies": {
-    "alexa-app": "^4.2.1",
-    "alexa-response": "^4.2.10",
-    "alexa-sdk": "^1.0.10",
-    "alexa-verifier": "^1.0.0",
-    "body-parser": "^1.18.2",
-    "ejs": "^2.5.7",
-    "express": "^4.16.2",
-    "http": "0.0.0",
-    "node-fetch": "^2.0.0",
-    "request": "^2.83.0"
-  }
+    "axios": "^0.17.1",
+    "circular-json": "^0.5.1",
+    "jovo-framework": "<=1.0.0",
+    "node-fetch": "^1.7.3",
+    "request": "^2.83.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jovotech/jovo-sample-voice-app-nodejs.git"
+  },
+  "author": "Jovo",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jovotech/jovo-sample-voice-app-nodejs/issues"
+  },
+  "homepage": "https://github.com/jovotech/jovo-sample-voice-app-nodejs#readme"
 }
