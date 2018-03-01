@@ -1,0 +1,22 @@
+iplDefinitionIntent what is indian premier league
+iplDefinitionIntent what is ipl
+iplDefinitionIntent what this skill is all about
+iplFinalWinner who won the ipl season {season}
+iplFinalWinner who was the winner of ipl season {season}
+iplTotalMatches what are the total number of matches played ever in IPL
+iplTotalMatches what is the total number of matches played in IPL
+iplTotalMatches what are the total number of matches played ever in indian premier league
+iplTotalMatches how many matches played by teams in ipl
+thanksIntent goodbye
+thanksIntent bye
+thanksIntent tata
+thanksIntent stop
+thanksIntent thanks
+thanksIntent exit
+thanksIntent close
+thanksIntent close alexa ipl skill
+thanksIntent quit
+thanksIntent shutdown
+helloIntent say hello
+helloIntent hello
+helloIntent hi
