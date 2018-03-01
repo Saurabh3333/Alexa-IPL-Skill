@@ -3,6 +3,9 @@
 const app = require('jovo-framework').Jovo;
 const webhook = require('jovo-framework').Webhook;
 var fetchAction =  require('node-fetch');
+var express = require('express');
+
+const appExpress = express();
 
 let intentMap = {
     'AMAZON.YesIntent': 'YesIntent',
@@ -20,6 +23,14 @@ webhook.post('/ipl', function(req, res) {
     app.handleRequest(req, res, handlers);
     app.execute();
     
+});
+
+appExpress.get('/', function(req, res) {
+    res.send("Hasura IPL is listening to requests at /ipl");
+});
+
+appExpress.get('/ipl', function(req, res) {
+    res.send("Hasura IPL skill is live.");
 });
 
 var url = "https://data.modesty54.hasura-app.io/v1/query";
@@ -101,3 +112,7 @@ const handlers = {
         }
     },
 };
+
+appExpress.listen(8081, function () {
+    console.log("Static Pages are listening to port 8081");
+    });
