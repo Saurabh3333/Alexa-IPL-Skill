@@ -1,47 +1,17 @@
-# Hasura Hello World
+## About
+### What is an Amazon-Alexa Skill?
+Alexa is Amazon’s `voice service` and the brain behind tens of millions of devices like the Amazon Echo, Echo Dot, and Echo Show. Alexa provides capabilities, or skills, that enable customers to create a more personalized experience. It is capable of voice interaction, music playback, making to-do lists, setting alarms, streaming podcasts, playing audiobooks, and providing weather, traffic, and other real-time information, such as news. Alexa can also control several smart devices using itself as a home automation system. Users can extend the Alexa capabilities by installing "skills" (additional functionality developed by third-party vendors, in other settings more commonly called apps).  
 
-This quickstart will take you over Hasura's instant backend APIs (BaaS) and how to deploy your custom code too.
-Once you go through this README, you'll be able to configure and use the Hasura APIs for your apps and you'll also
-know how to deploy your own code.
+### What does this project have?
+* This project is based on the custom alexa skills that have been created on scanning and querying the IPL dataset (https://www.kaggle.com/manasgarg/ipl/data). The dataset consists of statistical analysis of all the matches ever played in the IPL upto season 10 (2017). In the project the custom skills have been programmed using the `node express` framework. The user requires an alexa enabled device like Amazon Echo, Echo Dot and Echo Show to interact with the skill.
+* The project also contains a cross platform mobile app based on the `react-native` framework. This app contains a log of defined intents, their utterances and the respective response alexa will give. This app can serve as a companion for the user to effectively interact with `alexa`.
 
-## Basic Hasura concepts
-
-There are 3 core concepts that drive everything you do with Hasura. 1) Hasura projects, 2) Hasura clusters and 3) deploying your project to the cluster. The [hasura CLI](https://docs.hasura.io/0.15/manual/install-hasura-cli.html) tool is required to run manage everything Hasura.
-
-![core-hasura-concepts](https://docs.hasura.io/0.15/_images/core-hasura-concepts.png)
-
-### Concept #1: A hasura project
-
-A hasura project is a folder on your filesystem that contains all the source code and configuration for your application.
-A hasura project has a particular structure and the best way to create a hasura project is by cloning one from hasura.io/hub.
-
-A Hasura project contains:
-
-1. Configuration files for Hasura's ready-made microservices:
-   - eg: the minimum password length for Hasura's instant auth APIs
-   - eg: domains that you want to point to your application
-2. Migration files that capture your data modelling:
-   - Tables and relationships you create give you instant data APIs
-   - These files capture your data modelling and changes you make to your models
-3. Source files for your custom code:
-   - eg: a custom API you wrote that does cool ML-and-the-AI things,
-   - eg: a custom webapp that servers a UI
-
-### Concept #2: A hasura cluster
-
-A Hasura cluster is a cluster of nodes (VMs) on the cloud that can host any Hasura project. It has all the Hasura microservices running and the necessary tooling for you to deploy your Hasura project.
-Every Hasura cluster comes with a name and a domain attached to it as well. Eg: `awesome45.hasura-app.io`.
-
-### Concept #3: Deploying to the hasura cluster
-
-Once you 'add' a Hasura cluster to your Hasura project, running a ``git push hasura master`` will
-deploy your Hasura project to the cluster.
-Your configurations, database schema, and your microservices will get deployed in a single go.
-
-
-## Clone & deploy
-
-Any project on hasura.io/hub can be cloned and deployed. In fact, this hello-world is a hasura project itself.
+### Link to mobile app
+* The link to the mobile app can be found here. [IPLAlexaSkill](https://drive.google.com/drive/folders/1cqYim39u2zC1iGJBKR_SiDwv3Senu1X6).
+* Follow the steps to get it running on your device: [get the steps to setup here](https://github.com/anishsamant/IPLAlexaSkill/blob/master/README.md).
+_________________________________________________________________________________________________________________________________________________________
+## Deployment Instructions
+Any project on hasura.io/hub can be cloned and deployed. In fact, this alexa-ipl-skill is a hasura project itself.
 
 **Step 1:** Install the hasura CLI: [installation instructions](https://docs.hasura.io/0.15/manual/install-hasura-cli.html)
 
@@ -49,14 +19,14 @@ Any project on hasura.io/hub can be cloned and deployed. In fact, this hello-wor
 
 ```
 $ # 1) Run the quickstart command
-$ hasura quickstart hasura/hello-world
+$ hasura quickstart anishsamant/alexa-ipl-skill
 ```
 
 **Step 3:** Deploy the project to your free cluster!
 
 ```
 $ # 2) Git add, commit & push to deploy to your cluster
-$ cd hello-world
+$ cd alexa-ipl-skill
 $ git add . && git commit -m 'First commit'
 $ git push hasura master
 ```
@@ -65,7 +35,7 @@ $ git push hasura master
 
 ### What got 'deployed'?
 
-This hello-world project contains a sample data schema and some sample data (files in `migrations`) and a simple microservice in nodejs (`microservices/www`). When you ran the `git push` these tables and a microservice and even a subdomain to access your microservice all
+This `alexa-ipl-skill` project contains a sample data schema and some sample data (files in `migrations`) and a simple microservice in nodejs (`microservices/www`). When you ran the `git push` these tables and a microservice and even a subdomain to access your microservice all
 got created.
 
 In the next few steps you'll be browsing the instant Hasura APIs and exploring the custom microservice too.
@@ -81,396 +51,161 @@ Access the **api-console** via the following command:
 $ hasura api-console
 ```
 
-This will open up Console UI on the browser. You can access it at [http://localhost:9695](http://localhost:9695)
+This will open up Console UI on the browser. You can access it at [http://localhost:9695](http://localhost:9695).  
+You can know more about the hasura cli [here](https://docs.hasura.io/0.15/manual/hasuractl/index.html).
 
-## Data APIs
+_________________________________________________________________________________________________________________________________________________________
+## How to test out the skill
+### Workflow
+* You can test out this skill using an Amazon Echo device or at [Echosim](https://echosim.io/welcome) (Web Browser) or at [Reverb](https://reverb.ai/) (Android/iOS). The workflow is as follows:
+* You invoke the skill saying **"Alexa, start IPL Search"**.  
+Currently we have 5 types of queries that can be invoked  
+**1. About IPL:**  
+sample invocation - `What is Indian Premier League`  
+**2. Total Matches:**  
+sample invocation - `What is the total number of matches played ever in IPL`   
+**3. Season Winner:**  
+sample invocation - `Who was the winner of IPL season 2017`  
+**4. Welcome message:**  
+sample invocation - `hello`  
+**5. Exit:**  
+sample invocation - `close alexa ipl skill`
 
-The Hasura Data API provides a ready-to-use HTTP/JSON API backed by a PostgreSQL database.
+**Note:** We will iteratively add more intents to the skills, which will be introduced in later releases.
 
-These APIs are designed to be used by any client capable of making HTTP requests, especially
-and are carefully optimized for performance.
+### Follow the steps to get your sample skill running.
+1. Go to [Amazon developer console](https://developer.amazon.com/edw/home.html#/skills).
 
-The Data API provides the following features:
-* CRUD APIs on PostgreSQL tables with a MongoDB-esque JSON query syntax.
-* Rich query syntax that supports complex queries using relationships.
-* Role based access control to handle permissions at a row and column level.
+2. Login with your **amazon credentials** and select the `ALEXA` **Tab** on top.
 
- The url to be used to make these queries is always of the type: `https://data.cluster-name.hasura-app.io/v1/query` (in this case `https://data.h34-excise98-stg.hasura-app.io`)
+3. Click on `Get Started >` for **Alexa Skills Kit**.
 
-As mentioned earlier, this quickstart app comes with two pre-created tables `author` and `article`.
+![getStarted](https://user-images.githubusercontent.com/21247634/36897778-f57725aa-1e3d-11e8-9d64-0dcb27673bc9.jpg).
+  
+4. Click on `Add a New Skill`.
 
-#### author
+![addNewSkill](https://user-images.githubusercontent.com/21247634/36897779-f5acf892-1e3d-11e8-9348-ba45dd50e1a0.jpg)
+  
+5. Call the skill `IPL search` and give the name as `ipl search`.
 
-column | type
---- | ---
-id | integer NOT NULL *primary key*
-name | text NOT NULL
+![invocationName](https://user-images.githubusercontent.com/21247634/36897780-f5e89028-1e3d-11e8-95cf-555ca07d7494.jpg)
 
-#### article
+**Note**  You can give any name. We have given **ipl search** for our skill.
 
-column | type
---- | ---
-id | serial NOT NULL *primary key*
-title | text NOT NULL
-content | text NOT NULL
-rating | numeric NOT NULL
-author_id | integer NOT NULL
+**Click Next.**  
+6. In the interaction model go to **</> Code Editor** and paste the below intent schema.
 
-
-Alternatively, you can also view the schema for these tables on the api console by heading over to the tab named `data`.
-
-You can just paste the queries shown below into the json textbox in the API explorer and hit send to test them out.
-(The following is a short set of examples to show the power of the Hasura Data APIs, check out our [documentation](https://docs.hasura.io/) for more when you're done here!)
-
-Let's look at some sample queries to explore the Data APIs:
-
-### CRUD
-Simple CRUD Operations are supported via an intuitive JSON query language.
-
-* Select all entries in the article table, ordered by rating:
-```json
-{
-    "type": "select",
-    "args": {
-        "table": "article",
-        "columns": ["*"],
-        "order_by": [
-            {
-                "column": "rating"
-            }
-        ]
-    }
-}
 ```
-
-* Update a particular entry in the author table:
-```json
 {
-    "type": "update",
-    "args": {
-        "table": "author",
-        "where": {
-            "name": {
-                "$eq": "Adams"
-            }
-        }
-    }
-}
-```
-
-* The where clause on the Data API is a very expressive boolean expression, and can be arbitrarily complex. For example:
-```json
-{
-    "type": "select",
-    "args": {
-        "table": "article",
-        "columns": [
-            "content",
-            "rating"
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "helloIntent",
+        "samples": [
+          "say hello",
+          "hello",
+          "hi"
         ],
-        "where": {
-            "$and": [
-                {
-                    "$or": [
-                        {
-                            "author_id": {
-                                "$eq": "7"
-                            }
-                        },
-                        {
-                            "title": {
-                                "$like": "Editorial%"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "rating": {
-                        "$gte": "3"
-                    }
-                }
-            ]
-        },
-        "order_by": [
-            {
-                "column": "rating",
-                "order": "asc"
-            }
-        ]
-    }
-}
-```
-
-  This query will select all the articles with ratings above 3, which were either written by an author with author_id 7 or, which have a title starting with "Editorial". This can be used to construct complex queries that feel very intuitive.
-
-* Pagination on queries is supported through limit and offset parameters:
-```json
-{
-    "type": "select",
-    "args": {
-        "table": "article",
-        "columns": ["*"],
-        "limit": "10",
-        "offset": "20"
-    }
-}
-```
-
-* Raw SQL:  The APIs support running arbitrary SQL queries through a run_sql type key.
-
-This can be used to perform queries directly on the postgres db:
-```json
-{
-    "type" : "run_sql",
-    "args" : {
-        "sql" : "CREATE TABLE category (
-                     id SERIAL NOT NULL PRIMARY KEY,
-                     name TEXT NOT NULL
-                 );"
-    }
-}
-```
-
-### Relationships
-
-Modelling data in an RDBMS involves establishing connections between various tables through foreign key constraints. These can be used to build more complex relationships, which can be used to fetch related data alongside the columns queried, as pseudo columns.
-
-In the standard article-author sample schema, the relationships we can define are:
-1. Articles have an object/many-to-one relationship with authors
-2. Authors have an array/one-to-many relationship with articles.
-
-We can define these relationships on the database, and use them to get related data by expanding the relationships in the columns array:
-```json
-{
-    "type": "select",
-    "args": {
-        "table": "author",
-        "columns": [
-            "name",
-            {
-                "name": "articles",
-                "columns": [
-                    "content",
-                    "title",
-                    "rating"
-                ]
-            }
-        ]
-    }
-}
-```
-
-This query will add an array of article objects alongside the name of the author.
-
-You can also use the standard where/order_by/offset/limit conditions on the article objects:
-```json
-{
-    "type": "select",
-    "args": {
-        "table": "author",
-        "columns": [
-            "name",
-            {
-                "name": "articles",
-                "columns": [
-                    "content",
-                    "title",
-                    "rating"
-                ],
-                "where": {
-                    "rating": {
-                        "$gte": "3"
-                    }
-                },
-                "order_by": [{
-                    "column": "rating",
-                    "order": "desc"
-                }]
-            }
+        "slots": []
+      },
+      {
+        "name": "iplDefinitionIntent",
+        "samples": [
+          "what is indian premier league",
+          "what is ipl",
+          "what this skill is all about"
         ],
-        "where": {
-            "name": {
-                "$like": "A%"
-            }
-        }
-    }
-}
-```
-
-This will get us a list of all articles with rating greater than 3 by authors with names starting with A, ordered by rating among articles by the same author.
-
-All this and more can be done with a single query!
-
-### Aggregations
-
-The JSON based query language is designed to be simple yet powerful. That said, there will be queries that cannot be expressed through the select query, like getting the number of ratings given for each article, if you have the ratings by user data stored in another table.
-
-To express complex queries like aggregations, window functions, custom joins etc, you can directly use SQL.
-```json
-{
-  "type" : "run_sql",
-  "args" : {
-    "sql" : "CREATE VIEW article_rating_count AS...",
+        "slots": []
+      },
+      {
+        "name": "iplFinalWinner",
+        "samples": [
+          "Who won ipl season {season}",
+          "Who was the winner of ipl season {season}"
+        ],
+        "slots": [
+          {
+            "name": "season",
+            "type": "AMAZON.NUMBER"
+          }
+        ]
+      },
+      {
+        "name": "iplTotalMatches",
+        "samples": [
+          "what is the total number of matches played ever in IPL",
+          "what is the total number of matches played ever in indian premier league",
+          "how many matches played by teams in ipl",
+          "what is the total number of matches played in IPL"
+        ],
+        "slots": []
+      },
+      {
+        "name": "thanksIntent",
+        "samples": [
+          "goodbye",
+          "bye",
+          "tata",
+          "stop",
+          "thanks",
+          "exit",
+          "close",
+          "close alexa ipl skill",
+          "quit",
+          "shutdown"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "ipl search"
   }
 }
-```
-
-If you can define a view with your query in SQL, you can then track it with the Data APIs, and use the JSON query language to access it.
-```json
-{
-  "type" : "add_existing_table_or_view",
-  "args" : {
-    "name" : "article_rating_count"
-  }
-}
-```
-
-  Note that views are read only, so you can only perform select queries on them. You can also manually define object relationships on views, in order to easily obtain them from select queries on other tables.
-
-### Role based access control
-
-Permissions on the Data APIs are designed to restrict the operations that can be performed on the database by various users/roles. The Data APIs support setting permissions on various CRUD operations at a row/column granularity.  By default, the admin role has access to all operations.
-
-This is accomplished through the session middleware that Hasura provides. This session middleware provides the Data API with the role and user id of the current user with every request, and this lets the Data service apply the permissions as appropriate.
-
-* The permissions can be based on a user id check from the information provided by the session middleware:
-```json
-{
-    "type" : "create_insert_permission",
-    "args" : {
-        "table" : "article",
-        "role" : "user",
-        "permission" : {
-            "check" : {
-                "author_id" : "REQ_USER_ID"
-            }
-        }
-    }
-}
-```
-
-  This query will set select permissions on the article table for the user role so that users will be able only insert entries into the article table with author_ids matching their user ids. This means that the database will not permit a user to write an article in another user's name.
-  This sort of a constraint is a property of the data, and therefore should be accomplished in the database, and the permission layer provides the perfect tools for the job.
-  Apart from create_insert_permissions, the Data API also provides other types of queries to create select/update and delete permissions. This way, permissions can be set on all CRUD operations.
-
-* The permission object in the json query uses syntax very similar to a where clause in the select query, making it extremely expressive,  as shown here:
-```json
-{
-    "type" : "create_update_permission",
-    "args" : {
-        "table" : "article",
-        "role" : "user",
-        "permission" : {
-            "check" : {
-                "author_id" : "REQ_USER_ID",
-                "$or" : [
-                    {
-                        "category" : "editorial",
-                        "is_reviewed" : false
-                    },
-                    {
-                        "category" : { "$neq" : "editorial"}
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
-This query sets insert permissions on the article table for the user role so that users can only insert entries into the table if the author_id is the same as their user id, and if is_reviewed is false when the category is editorial.
-
-* This permissions setup can be further improved by creating custom roles. For example, the above schema can be improved by having an author role that can be given permissions to edit only the article table, and nothing else.
-
-This is very useful for a more complex schema, say a forum, with several types of users like admins, moderators, thread owners, and normal users.
-
-## Auth APIs
-
-Every app almost always requires some form of authentication. This is useful to identify a user and provide some sort of personalised experience to the user. Hasura provides various types of authentication (username/password, mobile/otp, email/password, Google, Facebook etc).
-
-You can try out these in the `API EXPLORER` tab of the `api console`. To learn more, check out our [docs](https://docs.hasura.io/0.15/manual/users/index.html)
-
-## File APIs
-
-Sometimes, you would want to upload some files to the cloud. This can range from a profile pic for your user or images for things listed on your app. You can securely add, remove, manage, update files such as pictures, videos, documents using the Hasura filestore.
-
-This is done via simple POST, GET and DELETE requests on a single endpoint.
-
-Just like the Data service, the File API supports Role based access control to the files, along with custom authorization hooks. (Check out our [ documentation ](https://docs.hasura.io/) for more!)
-
-### Uploading files
-
-Uploading a file requires you to generate a file_id and make a post request with the content of the file in the request body and the correct mime type as the content-type header.
-
-```http
-POST https://filestore.project-name.hasura-app.io/v1/file/05c40f1e-cdaf-4e29-8976-38c899 HTTP/1.1
-Content-Type: image/png
-Authorization: Bearer <token>
-
-<content-of-file-as-body>
-```
-
-This is a very simple to use system, and lets you directly add an Upload button on your frontend, without spending time setting up the backend.
-
-### Downloading files
-Downloading a file requires the unique file id that was used to upload it. This can be stored in the database and retrieved for download.
-
-To download a particular file, what is required is a simple GET query.
-```http
-GET https://filestore.project-name.hasura-app.io/v1/file/05c40f1e-cdaf-4e29-8976-38c899 HTTP/1.1
-Authorization: Bearer <token>
-```
-
-### Permissions
-By default, the File API provides three hooks to choose from
-
-  1. Private: Only logged in users can upload/download.
-  2. Public: Anyone can download, but only logged in users can upload.
-  3. Read Only: Anyone can download, but no one can upload.
-
-You can also set up your own authorization webhook!
-(Check out our [ documentation ](https://docs.hasura.io/) for more!)
-
-## Notify APIs
-
-Check out the [ Learning center ](http://localhost:9695/learning-center) tab on the API Console for short tutorials on all the APIs!
-
-## Add your own custom microservice
-
-### Docker microservice
 
 ```
-$ hasura microservice generate <service-name> -i <docker-image> -p <port>
-```
 
-### git push microservice
+**Note**  You can define your own intents.
 
-```bash
-$ hasura microservice generate <service-name>
-```
+7. Click on `Apply Changes` and click the `Build Model` button.
 
-Once you have added a new service, you need to add a route to access the service.
+8. Under `Configuration` section, for the service endpoint, check the HTTPS radio button.  
+Put the default URL as `https://www.<cluster-name>.hasura-app.io/ipl.`   
+(Run `$ hasura cluster status` from root directory to know your cluster name).
 
-### Add route for the service created.
+![endpoint](https://user-images.githubusercontent.com/21247634/36897781-f640ba50-1e3d-11e8-933b-1856af0ecfa6.jpg)
 
-```bash
-$ hasura conf generate-route <service-name> >> conf/routes.yaml
-```
+**Click next.**
+  
+9. About SSL certificates, Hasura services have auto generated LetsEncrypt Grade A SSL certificates. This means, you have to check the radio button that says **My development endpoint has a certificate from a trusted certificate authority.**  
+**Click next.**
+  
+10. And you are done. You can test your skills in the `Test` section.
 
-It will generate the route configuration for the service and append it to `conf/routes.yaml`.
+### Internal Implementation
+This skill is written in Node Express. The Implementation is as follows:
+* When you make a particular type of query, an appropriate intent from the skill set is invoked and then the relevant method mapped to that intent is called from the node express script, which fetches the results from the matches database. A response string is generated using fetched data, which is spoken out by Alexa.
+* If Alexa is not able to recognise the spoken words or if there exists no results based on the parameters passed, Alexa will humbly respond and ask you to try again.
 
-### Add a remote for the service [Only for git push based services]
+_________________________________________________________________________________________________________________________________________________________
+## Contributers
+1. Saurabh Shubham
+   * [Github](https://github.com/Saurabh3333)
+   * [LinkedIn](https://www.linkedin.com/in/saurabh-shubham/)
+   * [Twitter](https://twitter.com/iamsaurabh33)
+2. Anish Samant
+   * [Github](http://github.com/anishsamant)
+   * [LinkedIn](https://www.linkedin.com/in/anish-samant-a03452146/)
+   * [Twitter](https://twitter.com/anishsamant)
 
-```bash
-$ hasura conf generate-remote <service-name> >> conf/ci.yaml
-```
-
-This will append the remotes configuration to the conf/ci.yaml file under the {{ cluster.name }} key.
-
-### Apply your changes
-
-```
-$ git add .
-$ git commit -m "Added a new service"
-$ git push hasura master
-```
+_________________________________________________________________________________________________________________________________________________________
