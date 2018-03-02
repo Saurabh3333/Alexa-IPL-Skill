@@ -1,6 +1,8 @@
 description: A ready-to-deploy Amazon Alexa Skill that enables the users to query
   various facts on historic IPL data through Alexa powered devices like Amazon Echo,
-  Amazon Dots,etc. The skill is developed using `node express` framework.
+  Amazon Dots,etc. The skill is developed using `node express` framework. The project
+  also has a `react-native` app which functions as a companion for the user to efficiently
+  interact with `alexa`.
 keywords: hello-world, getting-started, hasura, tutorial, quickstart
 media: {}
 name: alexa-ipl-skill
