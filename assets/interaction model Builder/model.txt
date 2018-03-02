@@ -1,0 +1,76 @@
+{
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "helloIntent",
+        "samples": [
+          "say hello",
+          "hello",
+          "hi"
+        ],
+        "slots": []
+      },
+      {
+        "name": "iplDefinitionIntent",
+        "samples": [
+          "what is indian premier league",
+          "what is ipl",
+          "what this skill is all about"
+        ],
+        "slots": []
+      },
+      {
+        "name": "iplFinalWinner",
+        "samples": [
+          "Who won ipl season {season}",
+          "Who was the winner of ipl season {season}"
+        ],
+        "slots": [
+          {
+            "name": "season",
+            "type": "AMAZON.NUMBER"
+          }
+        ]
+      },
+      {
+        "name": "iplTotalMatches",
+        "samples": [
+          "what is the total number of matches played ever in IPL",
+          "what is the total number of matches played ever in indian premier league",
+          "how many matches played by teams in ipl",
+          "what is the total number of matches played in IPL"
+        ],
+        "slots": []
+      },
+      {
+        "name": "thanksIntent",
+        "samples": [
+          "goodbye",
+          "bye",
+          "tata",
+          "stop",
+          "thanks",
+          "exit",
+          "close",
+          "close alexa ipl skill",
+          "quit",
+          "shutdown"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "ipl search"
+  }
+}
