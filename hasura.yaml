@@ -1,6 +1,6 @@
-description: |
-  This quickstart will give you a fast but solid introduction to using hasura.
-  Follow the steps in the README to get started!
+description: A ready-to-deploy Amazon Alexa Skill that enables the users to query
+  various facts on historic IPL data through Alexa powered devices like Amazon Echo,
+  Amazon Dots,etc. The skill is developed using `node express` framework.
 keywords: hello-world, getting-started, hasura, tutorial, quickstart
 media: {}
 name: alexa-ipl-skill
