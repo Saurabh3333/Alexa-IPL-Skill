@@ -205,7 +205,8 @@ ________________________________________________________________________________
 ### Important Links
 
 1. **Github Project:-**  http://github.com/anishsamant/IPLAlexaSkill
-2. **.apk file:-** [IPLAlexaSkill](https://drive.google.com/drive/folders/1cqYim39u2zC1iGJBKR_SiDwv3Senu1X6)
+2. **.apk file:-** [IPLAlexaSkill](https://drive.google.com/drive/folders/1cqYim39u2zC1iGJBKR_SiDwv3Senu1X6)  
+   **(keep coming back for new version. Current: 03/03/2018)**
 
 ### ABOUT THE APP
 
@@ -264,7 +265,11 @@ Response: The Indian Premier League (IPL), officially Vivo Indian Premier League
 	
 ### Support
 
-&emsp;If you happen to get stuck anywhere, please mail us at <anish.samant97@gmail.com> or <saurabh.friday@gmail.com>. Alternatively, if you find a bug, you can raise an issue [here](https://github.com/Saurabh3333/Alexa-IPL-Skill/issues).
+&emsp;If you happen to get stuck anywhere, please mail us at <anish.samant97@gmail.com> or <saurabh.friday@gmail.com>. Alternatively, if you find a bug, you can raise an issue [here](https://github.com/anishsamant/IPLAlexaSkill/issues).
+
+_________________________________________________________________________________________________________________________________________________________
+## Support
+&emsp;If you happen to get stuck anywhere, please mail us at <saurabh.friday@gmail.com> or <anish.samant97@gmail.com>. Alternatively, if you find a bug, you can raise an issue [here](https://github.com/Saurabh3333/Alexa-IPL-Skill/issues).
 
 _________________________________________________________________________________________________________________________________________________________
 ## Contributers
