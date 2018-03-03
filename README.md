@@ -205,7 +205,8 @@ ________________________________________________________________________________
 ### Important Links
 
 1. **Github Project:-**  http://github.com/anishsamant/IPLAlexaSkill
-2. **.apk file:-** [IPLAlexaSkill](https://drive.google.com/drive/folders/1cqYim39u2zC1iGJBKR_SiDwv3Senu1X6)
+2. **.apk file:-** [IPLAlexaSkill](https://drive.google.com/drive/folders/1cqYim39u2zC1iGJBKR_SiDwv3Senu1X6)  
+   **(keep coming back for new version. Current: 03/03/2018)**
 
 ### ABOUT THE APP
 
