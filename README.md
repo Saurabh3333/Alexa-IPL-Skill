@@ -264,7 +264,11 @@ Response: The Indian Premier League (IPL), officially Vivo Indian Premier League
 	
 ### Support
 
-&emsp;If you happen to get stuck anywhere, please mail us at <anish.samant97@gmail.com> or <saurabh.friday@gmail.com>. Alternatively, if you find a bug, you can raise an issue [here](https://github.com/Saurabh3333/Alexa-IPL-Skill/issues).
+&emsp;If you happen to get stuck anywhere, please mail us at <anish.samant97@gmail.com> or <saurabh.friday@gmail.com>. Alternatively, if you find a bug, you can raise an issue [here](https://github.com/anishsamant/IPLAlexaSkill/issues).
+
+_________________________________________________________________________________________________________________________________________________________
+## Support
+&emsp;If you happen to get stuck anywhere, please mail us at <saurabh.friday@gmail.com> or <anish.samant97@gmail.com>. Alternatively, if you find a bug, you can raise an issue [here](https://github.com/Saurabh3333/Alexa-IPL-Skill/issues).
 
 _________________________________________________________________________________________________________________________________________________________
 ## Contributers
