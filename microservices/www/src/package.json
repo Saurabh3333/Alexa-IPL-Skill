@@ -4,12 +4,12 @@
   "description": "A sample voice app that works with the Jovo framework",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "circular-json": "^0.5.1",
     "express": "^4.16.2",
     "give-me-a-joke": "^0.1.2",
-    "jovo-framework": "<=1.0.0",
-    "node-fetch": "^1.7.3",
+    "jovo-framework": "1.1.6",
+    "node-fetch": "^2.1.2",
     "request": "^2.83.0",
     "socket.io": "^2.0.4"
   },
