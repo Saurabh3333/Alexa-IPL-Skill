@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "microservices/www/src/package.json"
+      ]
+    }
+  }
+}
